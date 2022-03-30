@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista De Estudiantes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1> Listado Estudiantes </h1>
+<label id ="mostrarTable"> </label>
+<link href="style.css">
+<script>
+    xhr = new XMLHttpRequest();
+    xhr.open('get','servlet-test',true)
+    xhr.onreadystatechange = ()=> {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var students = JSON.parse(xhr.responseText)
+            var array = [];
+
+            for (let z = 0; z < students.length; z++) {
+                array[z] = JSON.stringify(students[z]);
+                document.write(array[z] + "<br>")
+            }
+
+
+        }
+        /**
+         var body = document.getElementsByTagName("body")[0];
+         var tabla = document.createElement("table");
+         var tblBody = document.createElement("tbody");
+
+         for (let i = 0; i < students.length; i++) {
+            var hilera = document.createElement('tr');
+
+                    var textoCelda = document.createTextNode(array[i]);
+                }
+
+
+         celda.appendChild(textoCelda);
+         hilera.appendChild(textoCelda);
+
+         }
+         tblBody.appendChild(hilera);
+
+         tabla.appendChild(tblBody);
+
+         body.appendChild(tabla);
+
+         tabla.setAttribute("border", "2");
+         */
+    }
+
+    xhr.send(null)
+</script>
+
+</body>
+</html>

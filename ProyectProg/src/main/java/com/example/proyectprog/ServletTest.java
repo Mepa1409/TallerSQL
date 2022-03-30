@@ -38,7 +38,7 @@ public class ServletTest extends HttpServlet{
         try (
                 PrintWriter out = response.getWriter();
         ) {
-            out.println(stAux);
+            out.println(stAux + " \n ");
         }
         st2.findByCode(code2);
         st2.delete(code1);
@@ -58,7 +58,6 @@ public class ServletTest extends HttpServlet{
         String activity = request.getParameter("activity");
         Student s = new Student(code,name,sport,activity);
         st.createStudentDAO().addStudent(s);
-
 
         try( PrintWriter out = response.getWriter()){
 

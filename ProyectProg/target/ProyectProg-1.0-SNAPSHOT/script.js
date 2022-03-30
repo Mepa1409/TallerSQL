@@ -4,7 +4,7 @@ xhr.onreadystatechange = ()=>{
     if( xhr.readyState === 4 && xhr.status === 200 ){
         const students = JSON.parse( xhr.responseText)
         console.log( xhr.responseText)
-        //students.forEach( student => alert(`${student.code} ${student.surname} ${student.name}`))
+       // students.forEach( student => alert(`${student.code} ${student.surname} ${student.name}`))
     }
 }
 xhr.send(null)
@@ -47,23 +47,28 @@ document.getElementById('delete').addEventListener('click',()=>{
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.send( data )
     //alert(data)
-    alert("Elemento Eliminado")
+    alert("Estudiante  Eliminado")
 
 })
 
 document.getElementById('Buscar').addEventListener('click',()=> {
     const code1= document.getElementById('codeSearch').value;
-    alert(code1)
     const xhr = new XMLHttpRequest();
     xhr.open('GET','servlet-test?code1='+code1,true)
     xhr.onreadystatechange = ()=>{
         if( xhr.readyState === 4 && xhr.status === 200 ){
            var xd= JSON.parse(xhr.responseText)
+            var encuentra=false;
             xd.forEach(s=>{
                 if (code1==s.code){
-                    alert(s.name)
+                    alert(s.name+ " " + s.code)
+                    encuentra=true;
                 }
             })
+            if (encuentra==false){
+                alert("No Existe en la lista")
+            }
+
         }
     }
     const data = `code=${code1}`;
